@@ -12,9 +12,9 @@ where
     T: Sizer,
 {
     let code = read_test_file();
-    let lang = tree_sitter_rust::language();
+    let lang = tree_sitter_rust::LANGUAGE;
 
-    let splitter = Splitter::new(lang, sizer)
+    let splitter = Splitter::new(lang.into(), sizer)
         .expect("Failed to create rust splitter")
         .with_max_size(max_size);
     let chunks = splitter.split(&code).expect("Failed to split rust code");

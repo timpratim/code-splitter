@@ -12,9 +12,9 @@ where
     T: Sizer,
 {
     let code = read_test_file();
-    let lang = tree_sitter_python::language();
+    let lang = tree_sitter_python::LANGUAGE;
 
-    let splitter = Splitter::new(lang, sizer)
+    let splitter = Splitter::new(lang.into(), sizer)
         .expect("Failed to create python splitter")
         .with_max_size(max_size);
     let chunks = splitter.split(&code).expect("Failed to split python code");
